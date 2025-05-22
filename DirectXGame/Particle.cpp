@@ -2,7 +2,7 @@
 
 using namespace MathUtility;
 
-void Particle::Initialize(Model* model) {
+void Particle::Initialize(Model* model, Vector3 position) {
 
 	// NULLポインタチェック
 	assert(model);
@@ -10,6 +10,8 @@ void Particle::Initialize(Model* model) {
 	model_ = model;
 
 	worldTtansform_.Initialize();
+
+	worldTtansform_.translation_ = position;
 
 	// 色の設定
 	objectColor_.Initialize();
