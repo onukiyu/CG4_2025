@@ -2,7 +2,7 @@
 
 using namespace MathUtility;
 
-void Particle::Initialize(Model* model, Vector3 position) {
+void Particle::Initialize(Model* model, Vector3 position, Vector3 velocity) {
 
 	// NULLポインタチェック
 	assert(model);
@@ -13,15 +13,20 @@ void Particle::Initialize(Model* model, Vector3 position) {
 
 	worldTtansform_.translation_ = position;
 
+	velocity_ = velocity;
+
 	// 色の設定
 	objectColor_.Initialize();
 	color_ = {1, 1, 0, 1};
+
+	// 大きさ
+	worldTtansform_.scale_ = {0.2f, 0.2f, 0.2f};
 }
 
 void Particle::Update() {
 
 	// 移動
-	worldTtansform_.translation_ += {0.0f, 0.1f, 0.0f};
+	worldTtansform_.translation_ += velocity_;
 
 	// 行列を定数バッファに転送
 	//worldTtansform_.TransferMatrix();
