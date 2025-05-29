@@ -23,6 +23,8 @@ public:
 		return isFinished_; 
 	}
 
+	
+
 private:
 	// ワールド変換データ
 	WorldTransform worldTtansform_;

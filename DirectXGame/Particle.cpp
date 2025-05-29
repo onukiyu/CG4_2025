@@ -22,6 +22,8 @@ void Particle::Initialize(Model* model, Vector3 position, Vector3 velocity) {
 
 	// 大きさ
 	worldTtansform_.scale_ = {0.2f, 0.2f, 0.2f};
+
+	
 }
 
 void Particle::Update() {
@@ -55,6 +57,8 @@ void Particle::Update() {
 
 	// フェード処理
 	color_.w = std::clamp(1.0f - counter_ / kDuration, 0.0f, 1.0f);
+
+
 }
 
 void Particle::Draw(Camera& camera) {
@@ -63,3 +67,6 @@ void Particle::Draw(Camera& camera) {
 	model_->Draw(worldTtansform_, camera, &objectColor_);
 	
 }
+
+
+
