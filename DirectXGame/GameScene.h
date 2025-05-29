@@ -2,7 +2,7 @@
 #include "KamataEngine.h"
 #include "Particle.h"
 
-using namespace KamataEngine;
+
 
 // ゲームシーン
 class GameScene {
@@ -28,15 +28,15 @@ public:
 	// 描画
 	void Draw();
 
-	void ParticleBorn(Vector3 position);
+	void ParticleBorn(KamataEngine::Vector3 position);
 
 private:
 
 	// パーティクル3Dモデルデータ
-	Model* modelParticle_ = nullptr;
+	KamataEngine::Model* modelParticle_ = nullptr;
 
 	// カメラ
-	Camera camera_;
+	KamataEngine::Camera camera_;
 
 	// パーティクル
 	//Particle* particle_ = nullptr;
