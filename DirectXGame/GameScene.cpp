@@ -58,6 +58,15 @@ void GameScene::Initialize() {
 // 更新
 void GameScene::Update() {
 
+	// 終了フラグの立った弾を削除
+	particles_.remove_if([](Particle* particle) {
+		if (particle->IsFinished()) {
+			delete particle;
+			return true;
+		}
+		return false;
+	});
+
 	// パーティクルの更新
 	for (Particle* particle : particles_) {
 		particle->Update();
