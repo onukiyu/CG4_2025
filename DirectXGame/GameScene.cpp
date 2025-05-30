@@ -33,6 +33,13 @@ void GameScene::Initialize() {
 	// 乱数の初期化
 	srand((unsigned)time(NULL));
 
+	// モデル読み込み
+	modelEffect_ = Model::CreateFromOBJ("plane");
+
+	effect_ = new Effect();
+
+	effect_->EffectInitialize(modelEffect_);
+
 }
 // 更新
 void GameScene::Update() {
@@ -61,6 +68,8 @@ void GameScene::Update() {
 	}
 	//particle_->Update();
 
+	effect_->EffectUpdate();
+
 }
 // 描画
 void GameScene::Draw() {
@@ -75,9 +84,13 @@ void GameScene::Draw() {
 	for (Particle* particle : particles_) {
 		particle->Draw(camera_);
 	}
+	
+	effect_->EffectDraw(camera_);
 
 	// 3Dモデル描画後処理
 	Model::PostDraw();
+
+	
 }
 
 void GameScene::ParticleBorn(Vector3 position) {

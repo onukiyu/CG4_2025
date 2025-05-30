@@ -1,6 +1,7 @@
 #pragma once
 #include "KamataEngine.h"
 #include "Particle.h"
+#include "Effect.h"
 
 
 
@@ -35,10 +36,19 @@ private:
 	// パーティクル3Dモデルデータ
 	KamataEngine::Model* modelParticle_ = nullptr;
 
+
 	// カメラ
 	KamataEngine::Camera camera_;
+
+	// パーティクル3Dモデルデータ
+	KamataEngine::Model* modelEffect_ = nullptr;
+
+	// カメラ
+	//KamataEngine::Camera camera_;
 
 	// パーティクル
 	//Particle* particle_ = nullptr;
 	std::list<Particle*> particles_;
+
+	Effect* effect_ = nullptr;
 };
