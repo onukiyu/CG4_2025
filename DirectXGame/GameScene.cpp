@@ -19,6 +19,11 @@ GameScene::~GameScene() {
 		delete particle;
 	}
 	particles_.clear();
+
+	for (Effect* effect : effects_) {
+		delete effect;
+	}
+	effects_.clear();
 }
 
 // 初期化
@@ -36,9 +41,33 @@ void GameScene::Initialize() {
 	// モデル読み込み
 	modelEffect_ = Model::CreateFromOBJ("plane");
 
-	effect_ = new Effect();
+	//effect_ = new Effect();
 
-	effect_->EffectInitialize(modelEffect_);
+	// エフェクトの初期化
+	for (int i = 0; i < 10; i++) {
+		// 生成
+		Effect* effect = new Effect();
+		// 位置
+		// Vector3 position = {0.0f, 0.0f, 0.0f};
+		// 移動量
+		Vector3 velocity = {distribution(randomEngine), distribution(randomEngine), 0};
+
+		/*Normalize(velocity);
+		velocity *= distribution(randomEngine);
+		velocity *= 0.1f;*/
+
+		// 発生位置は乱数
+		float size = abs(distribution(randomEngine) * 5.0f) + 0.5f;
+
+		float rotate = abs(distribution(randomEngine) * 3.14f);
+
+		effect->EffectInitialize(modelEffect_, size, rotate);
+
+		// 初期化
+		//particle->Initialize(modelParticle_, position, velocity);
+		// リストに追加
+		effects_.push_back(effect);
+	}
 
 }
 // 更新
@@ -68,7 +97,10 @@ void GameScene::Update() {
 	}
 	//particle_->Update();
 
-	effect_->EffectUpdate();
+	for (Effect* effect : effects_) {
+		effect->EffectUpdate();
+	}
+	//effect_->EffectUpdate();
 
 }
 // 描画
@@ -84,8 +116,11 @@ void GameScene::Draw() {
 	for (Particle* particle : particles_) {
 		particle->Draw(camera_);
 	}
-	
-	effect_->EffectDraw(camera_);
+
+	for (Effect* effect : effects_) {
+		effect->EffectDraw(camera_);
+	}
+	//effect_->EffectDraw(camera_);
 
 	// 3Dモデル描画後処理
 	Model::PostDraw();

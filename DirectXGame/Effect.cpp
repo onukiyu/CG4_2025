@@ -4,7 +4,7 @@ using namespace KamataEngine;
 using namespace MathUtility;
 
 // 
-void Effect::EffectInitialize(KamataEngine::Model* model ) {//mataEngine::Vector3 position, KamataEngine::Vector3 velocity
+void Effect::EffectInitialize(KamataEngine::Model* model, float size, float rotate ) {//mataEngine::Vector3 position, KamataEngine::Vector3 velocity
 
 	// NULLポインタチェック
 	assert(model);
@@ -22,9 +22,9 @@ void Effect::EffectInitialize(KamataEngine::Model* model ) {//mataEngine::Vector
 	color_ = {1, 1, 0, 1};
 
 	// 大きさ
-	//worldTtansform_.scale_ = {0.2f, 0.2f, 0.2f};
+	worldTtansform_.scale_ = {size, 0.5f, 1.0f};
 
-	worldTtansform_.rotation_ = {0, 3.14f, 0};
+	worldTtansform_.rotation_ = {0.0f, 3.14f, rotate};
 
 }
 
@@ -40,3 +40,4 @@ void Effect::EffectDraw(KamataEngine::Camera& camera) {
 	// 3Dモデルを描画
 	model_->Draw(worldTtansform_, camera, &objectColor_);
 }
+

@@ -50,5 +50,5 @@ private:
 	//Particle* particle_ = nullptr;
 	std::list<Particle*> particles_;
 
-	Effect* effect_ = nullptr;
+	std::list<Effect*> effects_;
 };
