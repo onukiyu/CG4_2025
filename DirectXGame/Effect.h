@@ -7,13 +7,20 @@ class Effect {
 
 public:
 	// 初期化
-	void EffectInitialize(KamataEngine::Model* model, float size, float rotate);//KamataEngine::Vector3 position, KamataEngine::Vector3 velocity
+	void Initialize(KamataEngine::Model* model, float size, float rotate, KamataEngine::Vector3 position); // KamataEngine::Vector3 position, KamataEngine::Vector3 velocity
 
 	// 更新
-	void EffectUpdate();
+	void Update();
 
 	// 描画
-	void EffectDraw(KamataEngine::Camera& camera);
+	void Draw(KamataEngine::Camera& camera);
+
+	
+
+	// デスフラグのgetter
+	bool IsFinished() {
+		return isFinished_;
+	}
 
 private:
 	// ワールド変換データ

@@ -31,6 +31,9 @@ public:
 
 	void ParticleBorn(KamataEngine::Vector3 position);
 
+	void EffectBorn(KamataEngine::Vector3 position);
+
+
 private:
 
 	// パーティクル3Dモデルデータ
