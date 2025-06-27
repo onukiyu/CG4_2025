@@ -1,6 +1,6 @@
 #include "Particle.h"
 
-void Particle::Initialize(Model* model) {
+void Particle::Initialize(Model2* model) {
 
 	// NULLポインタチェック
 	assert(model);

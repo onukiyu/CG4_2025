@@ -10,13 +10,15 @@ GameScene::~GameScene() {
 	delete modelParticle_;
 	// パーティクルの解放
 	delete particle_;
+
+	Model2::StaticFinalize();
 }
 
 // 初期化
 void GameScene::Initialize() {
 
 	// 3Dモデルデータの生成
-	modelParticle_ = Model::CreateSphere(4, 4);
+	modelParticle_ = Model2::CreateSphere(4, 4);
 	// パーティクルの生成
 	particle_ = new Particle();
 
@@ -26,6 +28,8 @@ void GameScene::Initialize() {
 	
 	// パーティクルの初期化
 	particle_->Initialize(modelParticle_);
+
+	Model2::StaticInitialize();
 
 }
 // 更新
@@ -42,12 +46,12 @@ void GameScene::Draw() {
 	DirectXCommon* dxCommon = DirectXCommon::GetInstance();
 
 	// 3Dモデル描画処理
-	Model::PreDraw(dxCommon->GetCommandList());
+	Model2::PreDraw(dxCommon->GetCommandList());
 
 	// パーティクルの描画
 	particle_->Draw(camera_);
 
 	// 3Dモデル描画後処理
-	Model::PostDraw();
+	Model2::PostDraw();
 }
 
