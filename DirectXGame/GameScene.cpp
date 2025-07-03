@@ -18,7 +18,7 @@ GameScene::~GameScene() {
 void GameScene::Initialize() {
 
 	// 3Dモデルデータの生成
-	modelParticle_ = Model2::CreateSphere(4, 4);
+	modelParticle_ = Model2::CreateSquare();
 	// パーティクルの生成
 	particle_ = new Particle();
 
