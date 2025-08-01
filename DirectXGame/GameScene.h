@@ -2,6 +2,7 @@
 #include "KamataEngine.h"
 #include "Particle.h"
 #include "Model2.h"
+#include "Player.h"
 
 using namespace KamataEngine;
 
@@ -39,4 +40,7 @@ private:
 
 	// パーティクル
 	Particle* particle_ = nullptr;
+
+	Player* player_ = nullptr;
+	Model* model_ = nullptr;
 };
