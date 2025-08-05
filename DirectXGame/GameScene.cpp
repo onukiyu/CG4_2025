@@ -27,6 +27,8 @@ void GameScene::Initialize() {
 	// 3Dモデル
 	player_ = new Player();
 
+	graph_ = new Graph();
+
 	// カメラの初期化
 	camera_.Initialize();
 
@@ -38,6 +40,8 @@ void GameScene::Initialize() {
 	model_ = Model::CreateFromOBJ("player");
 	player_->Initialize(model_);
 
+	graph_->Initialize();
+
 	Model2::StaticInitialize();
 
 }
@@ -48,6 +52,8 @@ void GameScene::Update() {
 	particle_->Update();
 
 	player_->Update();
+
+	graph_->Update();
 
 }
 // 描画
@@ -89,6 +95,7 @@ void GameScene::Draw() {
 	Sprite::PreDraw(dxCommon->GetCommandList());
 
 	// 2D近景
+	graph_->Draw();
 
 	// スプライト描画後処理
 	Sprite::PostDraw();

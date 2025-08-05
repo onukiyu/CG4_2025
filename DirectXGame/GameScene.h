@@ -3,6 +3,7 @@
 #include "Particle.h"
 #include "Model2.h"
 #include "Player.h"
+#include "Graph.h"
 
 using namespace KamataEngine;
 
@@ -43,4 +44,6 @@ private:
 
 	Player* player_ = nullptr;
 	Model* model_ = nullptr;
+
+	Graph* graph_ = nullptr;
 };
