@@ -29,6 +29,8 @@ void GameScene::Initialize() {
 
 	graph_ = new Graph();
 
+	number_ = new Number();
+
 	// カメラの初期化
 	camera_.Initialize();
 
@@ -42,6 +44,8 @@ void GameScene::Initialize() {
 
 	graph_->Initialize();
 
+	number_->Initialize();
+
 	Model2::StaticInitialize();
 
 }
@@ -54,6 +58,8 @@ void GameScene::Update() {
 	player_->Update();
 
 	graph_->Update();
+
+	number_->Update();
 
 }
 // 描画
@@ -96,6 +102,8 @@ void GameScene::Draw() {
 
 	// 2D近景
 	graph_->Draw();
+
+	number_->Draw();
 
 	// スプライト描画後処理
 	Sprite::PostDraw();
